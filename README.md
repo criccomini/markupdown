@@ -51,6 +51,8 @@ I'll probably add more (e.g. `sitemap`, `minify`, `social`). It's a work in prog
 pip install markupdown
 ```
 
+Markupdown is compatible with Python 3.10 to 3.12
+
 ## Usage
 
 After you install Markupdown, go to an empty directory and initialize it:
