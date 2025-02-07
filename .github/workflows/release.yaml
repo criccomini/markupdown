@@ -28,13 +28,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Set up Rust stable
+      # Set up PDM stable
       - name: Install pdm
         run: pip install pdm
 
+      # Set up TOML updater
+      - name: Install tomlkit
+        run: pip install update-toml
+
       # Set pyproject.toml version using pdm
       - name: Set version
-        run: pdm config version ${{ github.event.inputs.version }}
+        run: update-toml --path project.version --value ${{ github.event.inputs.version }} --file pyproject.toml
 
       # Commit changes
       - name: Commit config version bump
