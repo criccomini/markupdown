@@ -1,0 +1,14 @@
+{%- assign index = "index.md" | frontmatter -%}
+{%- assign children = index.children | or_array -%}
+{%- assign siblings = index.siblings | or_array -%}
+{%- assign entries = children | concat:siblings| frontmatter | sort: "created_at" | reverse -%}
+<header>
+<h1><a href="/">{{ site.title }}</a></h1>
+<nav>
+<ul>
+{%- for entry in entries -%}
+<li><a href="{{ entry.link }}">{{ entry.title }}</a></li>
+{%- endfor -%}
+</ul>
+</nav>
+</header>

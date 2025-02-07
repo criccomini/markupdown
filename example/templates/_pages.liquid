@@ -1,0 +1,12 @@
+{%- if page.children or page.siblings -%}
+<nav>
+<ul>
+{%- assign children = page.children | or_array -%}
+{%- assign siblings = page.siblings | or_array -%}
+{%- assign entries = children | concat:siblings | frontmatter | sort: "created_at" | reverse -%}
+{%- for entry in entries -%}
+<li><a href="{{ entry.link }}">{{ entry.title }}</a></li>
+{%- endfor -%}
+</ul>
+</nav>
+{%- endif -%}

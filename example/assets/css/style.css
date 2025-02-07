@@ -1,0 +1,99 @@
+body {
+    background-color: #E0E1DD;
+    color: #415A77;
+    font-family: system-ui, sans-serif;
+}
+
+nav, header, footer, main, h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+}
+
+h1:not(header h1), h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    margin: 1rem 0rem;
+}
+
+main, header, footer, nav:not(header nav), footer {
+    width: 100%;
+    max-width: 56rem;
+    margin: 2.5rem auto;
+    line-height: 150%;
+}
+
+header {
+    display: flex;
+}
+
+header h1 {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1rem;
+    margin-right: 1rem;
+    padding: 0.5rem 1rem;
+    font-weight: normal;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+header h1 a {
+    color: #415A77;
+    text-decoration: none;
+}
+
+body footer {
+    font-size: 0.75rem;
+    color: #778DA9;
+}
+
+main {
+    margin: 2.5rem auto 2.5rem auto;
+}
+
+main p {
+    margin: 1rem 0;
+}
+
+a {
+    text-decoration: underline;
+    color: #415A77;
+}
+
+header nav a {
+    color: #778DA9;
+    text-decoration: none;
+}
+
+header nav {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1rem;
+}
+
+header nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+header nav ul li {
+    padding: 0.5rem 1rem;
+}
+
+html {
+    font-size: 16px;
+}
+
+@media (max-width: 1024px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+
+    header {
+        margin: 0;
+    }
+}
