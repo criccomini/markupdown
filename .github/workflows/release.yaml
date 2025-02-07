@@ -34,7 +34,7 @@ jobs:
 
       # Set pyproject.toml version using pdm
       - name: Set version
-        run: pdm configversion ${{ github.event.inputs.version }}
+        run: pdm config version ${{ github.event.inputs.version }}
 
       # Commit changes
       - name: Commit config version bump
