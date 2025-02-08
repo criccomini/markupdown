@@ -21,6 +21,10 @@ main, header, footer, nav:not(header nav), footer {
     line-height: 150%;
 }
 
+img {
+    max-width: 100%;
+}
+
 header {
     display: flex;
 }
