@@ -87,7 +87,11 @@ def render(
         "site": site,
     }
 
-    env = Environment(loader=FileSystemLoader(template_dir), autoescape=False, globals=env_globals)
+    env = Environment(
+        loader=FileSystemLoader(template_dir),
+        autoescape=False,
+        globals=env_globals,
+    )
 
     def _or_array(obj: Any) -> list:
         return [] if not obj else obj

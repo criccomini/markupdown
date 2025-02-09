@@ -1,10 +1,13 @@
 from __future__ import annotations
 
+import logging
 from pathlib import Path
 from typing import Any, Callable
 
 from .files import MarkdownFile
 from .ls import ls
+
+logger = logging.getLogger(__name__)
 
 
 def transform(
@@ -24,6 +27,9 @@ def transform(
     for subpath in subpaths:
         path = base_dir / subpath
         if path.is_file():
-            md_file = MarkdownFile(path)
-            func(md_file, base_dir)
-            md_file.save()
+            try:
+                md_file = MarkdownFile(path)
+                func(md_file, base_dir)
+                md_file.save()
+            except Exception as e:
+                logger.error(f"Failed to transform {path}: {e}")
