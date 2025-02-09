@@ -7,4 +7,3 @@
 - Docs, docs, docs (https://pdoc.dev, markdown docs in repo, blog post on cnr.sh)
 - Tests
 - Look at using webassets.readthedocs.io
-

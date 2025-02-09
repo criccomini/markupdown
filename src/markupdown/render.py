@@ -112,6 +112,24 @@ def render(
 
         raise TypeError(f"path must be str, Path, or list, but got {type(path)}")
 
+    def _render_redirects(md_file: MarkdownFile, base_dir: Path) -> None:
+        if redirect_froms := md_file.frontmatter().get("redirects_from"):
+            template = env.get_template("redirect.liquid")
+            html_base_dir = Path(dest_dir) if dest_dir else base_dir
+            redirect_to = md_file.url_path(base_dir)
+            if isinstance(redirect_froms, str):
+                redirect_froms = [redirect_froms]
+            assert isinstance(redirect_froms, list)
+            for redirect_from in redirect_froms:
+                redirect_from = Path(redirect_from)
+                if redirect_from.is_absolute():
+                    redirect_from = Path(redirect_from).relative_to("/")
+                redirect_from = html_base_dir / Path(redirect_from) / "index.html"
+                redirect_from.parent.mkdir(parents=True, exist_ok=True)
+                with open(redirect_from, "w", encoding="utf-8") as f:
+                    f.write(template.render(page={"redirect_to": redirect_to}))
+                logger.debug(f"Rendered redirect from: {redirect_from.absolute()}")
+
     env.add_filter("or_array", _or_array)
     env.add_filter("frontmatter", _frontmatter)
 
@@ -159,6 +177,8 @@ def render(
 
         with open(html_file_path, "w", encoding="utf-8") as f:
             f.write(rendered)
+
+        _render_redirects(md_file, base_dir)
 
         logger.debug(
             f"Rendered {md_file.path.absolute()} to {html_file_path.absolute()}"
