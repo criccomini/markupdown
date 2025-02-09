@@ -117,8 +117,11 @@ def render(
 
     def _render(md_file: MarkdownFile, base_dir: Path) -> None:
         html_base_dir = Path(dest_dir) if dest_dir else base_dir
-        subpath = md_file.path.relative_to(base_dir)
-        html_file_path = (html_base_dir / subpath.with_suffix(".html")).absolute()
+        subpath = md_file.path.relative_to(base_dir).with_suffix(".html")
+        if subpath.name != "index.html":
+            subpath = subpath.with_suffix("") / "index.html"
+        html_file_path = (html_base_dir / subpath).absolute()
+        html_file_path.parent.mkdir(parents=True, exist_ok=True)
         format_markdown = mistune.create_markdown(
             escape=False,
             plugins=[

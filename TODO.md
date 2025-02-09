@@ -8,7 +8,6 @@
 - Tests
 - Look at using webassets.readthedocs.io
 
-- Generate foo.md as foo/index.html instead of foo.html
 - If a local link points to a directory, add index.md to the path
 - Set `<meta name="date" content="{{ page.created_at }}">` if `created_at` is set
 - Add MARKUPDOWN_DEBUG env var to enable debug logging
