@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<base href="{{ site.base_url | default: "/" }}">
 <meta name="robots" content="noindex,nofollow"/>
-<meta http-equiv="refresh" content="0; url={{ page.redirect_to }}"/>
+<meta http-equiv="refresh" content="0; url={{ site.base_url }}{{ page.redirect_to }}"/>
 </head>
 </html>

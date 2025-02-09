@@ -116,7 +116,7 @@ def render(
         if redirect_froms := md_file.frontmatter().get("redirects_from"):
             template = env.get_template("redirect.liquid")
             html_base_dir = Path(dest_dir) if dest_dir else base_dir
-            redirect_to = md_file.url_path(base_dir)
+            redirect_to = Path("/") / md_file.url_path(base_dir)
             if isinstance(redirect_froms, str):
                 redirect_froms = [redirect_froms]
             assert isinstance(redirect_froms, list)
@@ -127,7 +127,12 @@ def render(
                 redirect_from = html_base_dir / Path(redirect_from) / "index.html"
                 redirect_from.parent.mkdir(parents=True, exist_ok=True)
                 with open(redirect_from, "w", encoding="utf-8") as f:
-                    f.write(template.render(page={"redirect_to": redirect_to}))
+                    f.write(
+                        template.render(
+                            site=site,
+                            page={"redirect_to": redirect_to},
+                        )
+                    )
                 logger.debug(f"Rendered redirect from: {redirect_from.absolute()}")
 
     env.add_filter("or_array", _or_array)
