@@ -8,4 +8,3 @@
 - Tests
 - Look at using webassets.readthedocs.io
 
-- Make `transform` work with a single file as the glob pattern

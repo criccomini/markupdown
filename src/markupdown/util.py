@@ -62,10 +62,13 @@ def resolve_base(glob_pattern: str) -> tuple[Path, str]:
     if not safe_parts:
         base = Path.cwd()
         glob_part = glob_pattern
-    else:
+    elif remainder_parts := p.parts[len(safe_parts) :]:
         base = Path(*safe_parts)
-        remainder_parts = p.parts[len(safe_parts) :]
-        glob_part = os.path.join(*remainder_parts) if remainder_parts else ""
+        glob_part = os.path.join(*remainder_parts)
+    else:
+        # If no glob, use the last dir/file as the glob
+        base = Path(*safe_parts[:-1])
+        glob_part = safe_parts[-1]
 
     return base.absolute(), glob_part
 

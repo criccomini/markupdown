@@ -29,4 +29,4 @@ def clean(dir: Path | str | None = None, safety: bool = True):
                 item.unlink()
         logger.debug(f"Cleaned directory contents: {dir}")
     else:
-        logger.warning(f"Directory not found: {dir}")
+        logger.info(f"Directory not found: {dir}")

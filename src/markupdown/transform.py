@@ -24,12 +24,18 @@ def transform(
     """
     base_dir, subpaths = ls(glob_pattern)
 
+    if not subpaths:
+        logger.warning(f"No files found matching {glob_pattern}")
+
     for subpath in subpaths:
         path = base_dir / subpath
-        if path.is_file():
+        if path.is_file() and path.exists():
             try:
                 md_file = MarkdownFile(path)
                 func(md_file, base_dir)
                 md_file.save()
             except Exception as e:
                 logger.error(f"Failed to transform {path}: {e}")
+        else:
+            # Skipping func for path
+            logger.warning(f"Skipping {func.__name__} for {path}: not a markdown file")

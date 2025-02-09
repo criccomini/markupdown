@@ -26,8 +26,10 @@ def cp(
 
     for subpath in subpaths:
         src_file = base_dir / subpath
-        dest_file = dest_dir / subpath
-
-        dest_file.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(src_file, dest_file)
-        logger.debug(f"Copied {src_file} to {dest_file}")
+        dest_file_or_dir = dest_dir / subpath
+        dest_file_or_dir.parent.mkdir(parents=True, exist_ok=True)
+        if src_file.is_dir():
+            shutil.copytree(src_file, dest_file_or_dir, dirs_exist_ok=True)
+        else:
+            shutil.copy2(src_file, dest_file_or_dir)
+        logger.debug(f"Copied {src_file} to {dest_file_or_dir}")
