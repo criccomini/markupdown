@@ -31,4 +31,4 @@ def init(root_path: Path | str = ".") -> None:
     # Create root directory if it doesn't exist
     shutil.copytree(example_dir, root_path, dirs_exist_ok=True)
 
-    logger.info(f"Initialized new markupdown project in {root_path.absolute()}")
+    logger.debug(f"Initialized new markupdown project in {root_path.absolute()}")

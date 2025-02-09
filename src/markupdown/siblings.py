@@ -24,6 +24,6 @@ def siblings(glob_pattern: str) -> None:
 
         if siblings:
             md_file.update_frontmatter({"siblings": siblings})
-            logger.info(f"Set siblings for {md_file.path}")
+            logger.debug(f"Set siblings for {md_file.path}")
 
     transform(glob_pattern, _siblings)

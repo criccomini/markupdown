@@ -48,6 +48,6 @@ def title(glob_pattern: str, ast_pattern: str | None = None) -> None:
         if not "title" in md_file.frontmatter():
             title = _default_title(md_file, ast_pattern)
             md_file.update_frontmatter({"title": title})
-            logger.info(f"Set title: {md_file.path.absolute()}")
+            logger.debug(f"Set title: {md_file.path.absolute()}")
 
     transform(glob_pattern, _title)

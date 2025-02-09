@@ -8,7 +8,4 @@
 - Tests
 - Look at using webassets.readthedocs.io
 
-- If a local link points to a directory, add index.md to the path
-- Set `<meta name="date" content="{{ page.created_at }}">` if `created_at` is set
-- Add MARKUPDOWN_DEBUG env var to enable debug logging
 - Make `transform` work with a single file as the glob pattern

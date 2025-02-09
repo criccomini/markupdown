@@ -29,6 +29,6 @@ def children(glob_pattern: str) -> None:
 
         if children:
             md_file.update_frontmatter({"children": children})
-            logger.info(f"Set children for {md_file.path}")
+            logger.debug(f"Set children for {md_file.path}")
 
     transform(glob_pattern, _children)

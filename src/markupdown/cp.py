@@ -30,4 +30,4 @@ def cp(
 
         dest_file.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(src_file, dest_file)
-        logger.info(f"Copied {src_file} to {dest_file}")
+        logger.debug(f"Copied {src_file} to {dest_file}")

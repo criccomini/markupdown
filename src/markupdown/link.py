@@ -22,6 +22,6 @@ def link(glob_pattern: str) -> None:
     def _link(md_file: MarkdownFile, base_dir: Path) -> None:
         link = Path("/") / md_file.url_path(base_dir=base_dir)
         md_file.update_frontmatter({"link": link.as_posix()})
-        logger.info(f"Set link: {md_file.path.absolute()}")
+        logger.debug(f"Set link: {md_file.path.absolute()}")
 
     transform(glob_pattern, _link)

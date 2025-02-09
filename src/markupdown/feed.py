@@ -1,3 +1,4 @@
+import logging
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -7,6 +8,8 @@ from markupdown.util import resolve_base
 
 from .files import MarkdownFile
 from .transform import transform
+
+logger = logging.getLogger(__name__)
 
 
 def feed(
@@ -62,4 +65,6 @@ def feed(
     dest_dir.mkdir(parents=True, exist_ok=True)
 
     fg.rss_file(str(dest_dir / "rss.xml"), pretty=True)
+    logger.debug(f"Generated RSS feed: {dest_dir / 'rss.xml'}")
     fg.atom_file(str(dest_dir / "atom.xml"), pretty=True)
+    logger.debug(f"Generated Atom feed: {dest_dir / 'atom.xml'}")

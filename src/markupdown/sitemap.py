@@ -55,7 +55,7 @@ def sitemap(
         # Add priority
         priority = ET.SubElement(url, "priority")
         priority.text = str(frontmatter.get("priority", default_priority))
-        logger.info(f"Added {md_file.path.absolute()}")
+        logger.debug(f"Added {md_file.path.absolute()}")
 
     transform(glob_pattern, _add_url)
 

@@ -160,7 +160,7 @@ def render(
         with open(html_file_path, "w", encoding="utf-8") as f:
             f.write(rendered)
 
-        logger.info(
+        logger.debug(
             f"Rendered {md_file.path.absolute()} to {html_file_path.absolute()}"
         )
 

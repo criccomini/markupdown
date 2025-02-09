@@ -27,6 +27,6 @@ def clean(dir: Path | str | None = None, safety: bool = True):
                 shutil.rmtree(item)
             else:
                 item.unlink()
-        logger.info(f"Cleaned directory contents: {dir}")
+        logger.debug(f"Cleaned directory contents: {dir}")
     else:
-        logger.info(f"Directory not found: {dir}")
+        logger.warning(f"Directory not found: {dir}")

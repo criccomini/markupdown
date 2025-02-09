@@ -80,6 +80,6 @@ def changelog(
             metadata["changelog"] = changelog
             file_to_update.update_frontmatter(metadata)
             file_to_update.save()
-            logger.info(f"Set changelog: {file_to_update.path.absolute()}")
+            logger.debug(f"Set changelog: {file_to_update.path.absolute()}")
 
     transform(glob_pattern, _changelog)

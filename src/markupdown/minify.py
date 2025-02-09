@@ -33,4 +33,4 @@ def minify(
                 minify_js=True,
             )
             path.write_text(minified)
-            logger.info(f"Minified {path}")
+            logger.debug(f"Minified {path}")

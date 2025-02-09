@@ -21,7 +21,7 @@ LOGGING_CONFIG = {
     "loggers": {
         "markupdown": {
             "handlers": ["console"],
-            "level": "INFO",
+            "level": "WARNING",
             "propagate": False,
         },
     },
@@ -30,7 +30,14 @@ LOGGING_CONFIG = {
 
 def init_logger() -> None:
     if not logging.getLogger("markupdown").handlers:
-        logging.config.dictConfig(LOGGING_CONFIG)
+        logging_config = LOGGING_CONFIG.copy()
+        env_log_level = os.environ.get("LOGLEVEL", "WARNING").upper()
+        if env_log_level:
+            logging_config["handlers"]["console"]["level"] = env_log_level
+            loggers = logging_config.setdefault("loggers", {})
+            markupdown_logger = loggers.setdefault("markupdown", {})
+            markupdown_logger["level"] = env_log_level
+        logging.config.dictConfig(logging_config)
 
 
 def resolve_base(glob_pattern: str) -> tuple[Path, str]:

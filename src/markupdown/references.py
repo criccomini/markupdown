@@ -32,6 +32,6 @@ def references(glob_pattern: str, ast_pattern: str | None = None) -> None:
 
         if references:
             md_file.update_frontmatter({"references": references})
-            logger.info(f"Set references for {md_file.path}")
+            logger.debug(f"Set references for {md_file.path}")
 
     transform(glob_pattern, _references)

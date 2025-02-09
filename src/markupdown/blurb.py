@@ -49,7 +49,7 @@ def blurb(
                     blurb = blurb[:-1]
                 blurb += "..."
             md_file.update_frontmatter({"blurb": blurb})
-            logger.info(f"Set blurb: {md_file.path.absolute()}")
+            logger.debug(f"Set blurb: {md_file.path.absolute()}")
         else:
             logger.warning(f"Could not find blurb: {md_file.path.absolute()}")
 
