@@ -6,7 +6,7 @@ authors = [
     {name = "Chris Riccomini", email = "criccomini@apache.org"},
 ]
 dependencies = ["python-liquid>=1.12.2", "python-frontmatter>=1.1.0", "minify-html>=0.15.0", "mistune>=3.1.1", "pyyaml>=6.0.2", "livereload>=2.7.1", "GitPython>=3.1.44", "jsonpath-ng>=1.7.0", "feedgen>=1.0.0", "pygments>=2.19.1"]
-requires-python = ">=3.12"
+requires-python = ">=3.10,<=3.12"
 readme = "README.md"
 license = {text = "CC0-1.0"}
 
