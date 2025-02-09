@@ -4,7 +4,7 @@ import logging
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-from git import Commit, Repo
+from git import Commit, InvalidGitRepositoryError, Repo
 
 from .files import MarkdownFile
 from .transform import transform
@@ -52,7 +52,11 @@ def changelog(
         }
 
     def _changelog(md_file: MarkdownFile, base_dir: Path) -> None:
-        repo = Repo(md_file.path, search_parent_directories=True)
+        try:
+            repo = Repo(md_file.path, search_parent_directories=True)
+        except InvalidGitRepositoryError:
+            logger.warning(f"Skipping changelog for non git repository: {md_file.path}")
+            return
         commits = list(repo.iter_commits(paths=md_file.path))
 
         if commits:
