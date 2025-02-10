@@ -75,8 +75,9 @@ def changelog(
                     dest_dir / md_file.path.relative_to(base_dir)
                 )
             metadata = file_to_update.frontmatter()
-            metadata["created_at"] = created_at
-            metadata["updated_at"] = updated_at
+            metadata.setdefault("changelog", [])
+            metadata.setdefault("created_at", created_at)
+            metadata.setdefault("updated_at", updated_at)
             metadata["changelog"] = changelog
             file_to_update.update_frontmatter(metadata)
             file_to_update.save()
