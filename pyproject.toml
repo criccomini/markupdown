@@ -1,6 +1,6 @@
 [project]
 name = "markupdown"
-version = "0.1.0"
+version = "0.2.0"
 description = "A modular static site generator in Python"
 authors = [
     {name = "Chris Riccomini", email = "criccomini@apache.org"},
