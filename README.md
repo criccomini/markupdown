@@ -57,6 +57,8 @@ Markupdown ships with the following functions:
 - `title`: Updates the `title` field frontmatter with the value of the first # h1 or filename
 - `transform`: Applies a transformation function to the frontmatter in markdown files
 
+See [DOCUMENTATION.md](./DOCUMENTATION.md) for more information.
+
 ## Installation
 
 ```bash
