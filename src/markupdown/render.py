@@ -30,11 +30,12 @@ class MarkupdownRenderer(mistune.HTMLRenderer):
         if not split_url.scheme:
             path = split_url.path
             path = self.md_file.resolve(self.base_dir, path)
-            path = MarkdownFile(self.base_dir / path).url_path(self.base_dir)
+            if path.name.endswith(".md"):
+                path = MarkdownFile(self.base_dir / path).url_path(self.base_dir)
             split_url = (
                 split_url.scheme,
                 split_url.netloc,
-                path,
+                str(path),
                 split_url.query,
                 split_url.fragment,
             )

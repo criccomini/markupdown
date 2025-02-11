@@ -101,3 +101,9 @@ html {
         margin: 0;
     }
 }
+
+blockquote {
+    border-left: 2px solid #415A77;
+    padding-left: 1rem;
+    margin-left: 0rem;
+}

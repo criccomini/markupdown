@@ -48,7 +48,8 @@ def changelog(
             "hash": str(commit.hexsha),
             "author": str(commit.author.name),
             "date": created_at,
-            "message": str(commit.message.strip()),
+            # Get first line of commit message
+            "message": str(commit.message).split("\n", 2)[0],
         }
 
     def _changelog(md_file: MarkdownFile, base_dir: Path) -> None:
