@@ -16,16 +16,17 @@ Additional features:
   - The Exports section builds links to the documented sections by matching the actual headers.
 """
 
+import argparse
 import ast
 import os
 import re
-import argparse
+
 import docstring_parser  # Requires: pip install docstring-parser
 
 # Global variables for the Table of Contents, anchors, and export info
-toc_entries = []       # List of tuples: (level, header_text, anchor)
-anchor_usage = {}      # To ensure unique anchors based on header text
-exports_by_module = {} # Mapping: module_name -> list of exported names (from __all__)
+toc_entries = []  # List of tuples: (level, header_text, anchor)
+anchor_usage = {}  # To ensure unique anchors based on header text
+exports_by_module = {}  # Mapping: module_name -> list of exported names (from __all__)
 
 
 def make_anchor(text):
@@ -34,8 +35,8 @@ def make_anchor(text):
     lower-casing, and replacing non-alphanumeric characters with hyphens.
     """
     text = text.replace("`", "").lower()
-    text = re.sub(r'[^a-z0-9]+', '-', text)
-    return text.strip('-')
+    text = re.sub(r"[^a-z0-9]+", "-", text)
+    return text.strip("-")
 
 
 def add_header(header_text, level):
@@ -66,23 +67,23 @@ def add_header(header_text, level):
 def get_module_name(file_path, package_dir):
     """
     Convert a file path to a dotted module name relative to package_dir.
-    
+
     For example, if package_dir is '/path/to/src' and file_path is
     '/path/to/src/foo/bar/baz.py', the returned module name is 'foo.bar.baz'.
     For __init__.py, the "__init__" part is dropped.
-    
+
     Args:
         file_path (str): The absolute or relative file path.
         package_dir (str): The root package directory.
-    
+
     Returns:
         str: The dotted module name.
     """
     rel_path = os.path.relpath(file_path, package_dir)
-    if rel_path.endswith('.py'):
+    if rel_path.endswith(".py"):
         rel_path = rel_path[:-3]  # remove ".py"
     parts = rel_path.split(os.sep)
-    if parts[-1] == '__init__':
+    if parts[-1] == "__init__":
         parts = parts[:-1]
     if not parts:
         return os.path.basename(os.path.abspath(package_dir))
@@ -108,7 +109,11 @@ def extract_all_from_ast(tree):
                         for elt in node.value.elts:
                             if isinstance(elt, ast.Str):
                                 items.append(elt.s)
-                            elif hasattr(ast, "Constant") and isinstance(elt, ast.Constant) and isinstance(elt.value, str):
+                            elif (
+                                hasattr(ast, "Constant")
+                                and isinstance(elt, ast.Constant)
+                                and isinstance(elt.value, str)
+                            ):
                                 items.append(elt.value)
                         return items
     return None
@@ -118,12 +123,12 @@ def get_function_signature(node):
     """
     Build a string representation of the function/method signature,
     including parameter type hints and the return type.
-    
+
     Note: Default values are not included.
-    
+
     Args:
         node (ast.FunctionDef or ast.AsyncFunctionDef): The function node.
-    
+
     Returns:
         str: A signature string, e.g.:
              def func(arg1: int, arg2: str, *args: Any, **kwargs: Any) -> bool:
@@ -177,15 +182,17 @@ def get_function_signature(node):
 def format_docstring(docstring):
     """
     Parse a docstring and reformat its components as Markdown.
-    
+
     Args:
         docstring (str): The raw docstring.
-    
+
     Returns:
         str: The formatted Markdown version of the docstring.
     """
     try:
-        parsed = docstring_parser.parse(docstring, style=docstring_parser.DocstringStyle.AUTO)
+        parsed = docstring_parser.parse(
+            docstring, style=docstring_parser.DocstringStyle.AUTO
+        )
     except Exception as e:
         # If parsing fails, return the original docstring.
         return docstring
@@ -205,7 +212,9 @@ def format_docstring(docstring):
             lines.append(f"- `{param.arg_name}`{type_part}: {param.description}")
         lines.append("")
     if parsed.returns:
-        type_part = f" (*{parsed.returns.type_name}*)" if parsed.returns.type_name else ""
+        type_part = (
+            f" (*{parsed.returns.type_name}*)" if parsed.returns.type_name else ""
+        )
         lines.append(f"**Returns:**{type_part} {parsed.returns.description}")
         lines.append("")
     if parsed.raises:
@@ -240,7 +249,9 @@ def extract_docstrings_from_node(node, parent_qualname, heading_level=2):
             lines.append(format_docstring(module_doc))
             lines.append("")
         for child in node.body:
-            lines.extend(extract_docstrings_from_node(child, parent_qualname, heading_level))
+            lines.extend(
+                extract_docstrings_from_node(child, parent_qualname, heading_level)
+            )
         return lines
 
     if isinstance(node, ast.ClassDef):
@@ -253,7 +264,9 @@ def extract_docstrings_from_node(node, parent_qualname, heading_level=2):
             lines.append("")
         for child in node.body:
             if isinstance(child, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
-                lines.extend(extract_docstrings_from_node(child, qname, heading_level + 1))
+                lines.extend(
+                    extract_docstrings_from_node(child, qname, heading_level + 1)
+                )
         return lines
 
     if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
@@ -304,7 +317,9 @@ def process_file(file_path, package_dir):
         if exported is not None:
             exports_by_module[module_name] = exported
 
-    md_lines.extend(extract_docstrings_from_node(tree, parent_qualname=module_name, heading_level=2))
+    md_lines.extend(
+        extract_docstrings_from_node(tree, parent_qualname=module_name, heading_level=2)
+    )
     md_lines.append("")
     return "\n".join(md_lines)
 
@@ -354,7 +369,7 @@ def generate_exports_section():
     """
     Generate a Markdown section listing __all__ exports for modules that define it.
     Each module and export is linked to its respective section.
-    
+
     Returns:
         list of str: Lines for the Exports section.
     """
@@ -374,7 +389,9 @@ def generate_exports_section():
             for export in sorted(exports_by_module[module]):
                 export_anchor = None
                 for lvl, header_text, anchor in toc_entries:
-                    if header_text == f"{module}.{export}" or header_text.endswith(f".{export}"):
+                    if header_text == f"{module}.{export}" or header_text.endswith(
+                        f".{export}"
+                    ):
                         export_anchor = anchor
                         break
                 if export_anchor is None:
@@ -405,7 +422,9 @@ def main():
     try:
         with open(args.output_file, "w", encoding="utf8") as f:
             f.write(final_content)
-        print(f"Documentation successfully generated and saved to '{args.output_file}'.")
+        print(
+            f"Documentation successfully generated and saved to '{args.output_file}'."
+        )
     except Exception as e:
         print(f"Error writing to output file: {e}")
 
