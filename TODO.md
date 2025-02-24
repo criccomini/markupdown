@@ -3,9 +3,9 @@
 - related: Generates related content frontmatter
 - json: Generates posts in JSON format
 
-- Docs, docs, docs (https://pdoc.dev, markdown docs in repo, blog post on cnr.sh)
 - Tests
 - Look at using webassets.readthedocs.io
 - Support mistune directives
 - Support asciidoc?
 - Support auto-anchor generation for headers
+- RSS feed is showing # titles as the description
