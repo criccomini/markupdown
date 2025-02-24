@@ -1,141 +1,104 @@
-# Documentation
+# `markupdown`
 
 ## Table of Contents
 
-- [`markupdown`](#markupdown)
-- [`__main__`](#main)
-- [`blurb`](#blurb)
-  - [`blurb.blurb`](#blurb-blurb)
-- [`changelog`](#changelog)
-  - [`changelog.changelog`](#changelog-changelog)
-- [`children`](#children)
-  - [`children.children`](#children-children)
-- [`clean`](#clean)
-  - [`clean.clean`](#clean-clean)
-- [`cp`](#cp)
-  - [`cp.cp`](#cp-cp)
-- [`feed`](#feed)
-  - [`feed.feed`](#feed-feed)
-- [`files`](#files)
-  - [`files.MarkdownFile`](#files-markdownfile)
-    - [`files.MarkdownFile.__init__`](#files-markdownfile-init)
-    - [`files.MarkdownFile.frontmatter`](#files-markdownfile-frontmatter)
-    - [`files.MarkdownFile.content`](#files-markdownfile-content)
-    - [`files.MarkdownFile.ast`](#files-markdownfile-ast)
-    - [`files.MarkdownFile.set_content`](#files-markdownfile-set-content)
-    - [`files.MarkdownFile.update_frontmatter`](#files-markdownfile-update-frontmatter)
-    - [`files.MarkdownFile.del_frontmatter_key`](#files-markdownfile-del-frontmatter-key)
-    - [`files.MarkdownFile.url_path`](#files-markdownfile-url-path)
-    - [`files.MarkdownFile.resolve`](#files-markdownfile-resolve)
-    - [`files.MarkdownFile.subpath`](#files-markdownfile-subpath)
-    - [`files.MarkdownFile.save`](#files-markdownfile-save)
-- [`init`](#init)
-  - [`init.init`](#init-init)
-- [`link`](#link)
-  - [`link.link`](#link-link)
-- [`ls`](#ls)
-  - [`ls.ls`](#ls-ls)
-- [`minify`](#minify)
-  - [`minify.minify`](#minify-minify)
-- [`pydoc`](#pydoc)
-  - [`pydoc.make_anchor`](#pydoc-make-anchor)
-  - [`pydoc.add_header`](#pydoc-add-header)
-  - [`pydoc.get_module_name`](#pydoc-get-module-name)
-  - [`pydoc.extract_all_from_ast`](#pydoc-extract-all-from-ast)
-  - [`pydoc.get_function_signature`](#pydoc-get-function-signature)
-  - [`pydoc.format_docstring`](#pydoc-format-docstring)
-  - [`pydoc.extract_docstrings_from_node`](#pydoc-extract-docstrings-from-node)
-  - [`pydoc.process_file`](#pydoc-process-file)
-  - [`pydoc.crawl_directory`](#pydoc-crawl-directory)
-  - [`pydoc.generate_toc`](#pydoc-generate-toc)
-  - [`pydoc.generate_exports_section`](#pydoc-generate-exports-section)
-  - [`pydoc.main`](#pydoc-main)
-- [`references`](#references)
-  - [`references.references`](#references-references)
-- [`render`](#render)
-  - [`render.MarkupdownRenderer`](#render-markupdownrenderer)
-    - [`render.MarkupdownRenderer.__init__`](#render-markupdownrenderer-init)
-    - [`render.MarkupdownRenderer.link`](#render-markupdownrenderer-link)
-    - [`render.MarkupdownRenderer.block_code`](#render-markupdownrenderer-block-code)
-  - [`render.render`](#render-render)
-- [`serve`](#serve)
-  - [`serve.serve`](#serve-serve)
-- [`siblings`](#siblings)
-  - [`siblings.siblings`](#siblings-siblings)
-- [`sitemap`](#sitemap)
-  - [`sitemap.sitemap`](#sitemap-sitemap)
-- [`title`](#title)
-  - [`title.title`](#title-title)
-- [`transform`](#transform)
-  - [`transform.transform`](#transform-transform)
-- [`util`](#util)
-  - [`util.init_logger`](#util-init-logger)
-  - [`util.resolve_base`](#util-resolve-base)
-  - [`util.HTMLStripper`](#util-htmlstripper)
-    - [`util.HTMLStripper.__init__`](#util-htmlstripper-init)
-    - [`util.HTMLStripper.handle_data`](#util-htmlstripper-handle-data)
-    - [`util.HTMLStripper.get_data`](#util-htmlstripper-get-data)
-  - [`util.strip_html`](#util-strip-html)
+- 🅼 [markupdown](#markupdown)
+- 🅼 [markupdown\.\_\_main\_\_](#markupdown-__main__)
+- 🅼 [markupdown\.blurb](#markupdown-blurb)
+- 🅼 [markupdown\.changelog](#markupdown-changelog)
+- 🅼 [markupdown\.children](#markupdown-children)
+- 🅼 [markupdown\.clean](#markupdown-clean)
+- 🅼 [markupdown\.cp](#markupdown-cp)
+- 🅼 [markupdown\.feed](#markupdown-feed)
+- 🅼 [markupdown\.files](#markupdown-files)
+- 🅼 [markupdown\.init](#markupdown-init)
+- 🅼 [markupdown\.link](#markupdown-link)
+- 🅼 [markupdown\.ls](#markupdown-ls)
+- 🅼 [markupdown\.minify](#markupdown-minify)
+- 🅼 [markupdown\.references](#markupdown-references)
+- 🅼 [markupdown\.render](#markupdown-render)
+- 🅼 [markupdown\.serve](#markupdown-serve)
+- 🅼 [markupdown\.siblings](#markupdown-siblings)
+- 🅼 [markupdown\.sitemap](#markupdown-sitemap)
+- 🅼 [markupdown\.title](#markupdown-title)
+- 🅼 [markupdown\.transform](#markupdown-transform)
+- 🅼 [markupdown\.util](#markupdown-util)
 
-## Exports
+<a name="markupdown"></a>
+## 🅼 markupdown
 
-- [`markupdown`](#markupdown):
-  - [`blurb`](#blurb-blurb)
-  - [`changelog`](#changelog-changelog)
-  - [`children`](#children-children)
-  - [`clean`](#clean-clean)
-  - [`cp`](#cp-cp)
-  - [`feed`](#feed-feed)
-  - [`init`](#init-init)
-  - [`link`](#link-link)
-  - [`ls`](#ls-ls)
-  - [`minify`](#minify-minify)
-  - [`references`](#references-references)
-  - [`render`](#render-render)
-  - [`serve`](#serve-serve)
-  - [`siblings`](#siblings-siblings)
-  - [`sitemap`](#sitemap-sitemap)
-  - [`title`](#title-title)
-  - [`transform`](#transform-transform)
+- **[Exports](#markupdown-exports)**
 
-<a id="markupdown"></a>
-# `markupdown`
+<a name="markupdown-exports"></a>
+### Exports
 
+- 🅼 [`blurb`](#markupdown-blurb)
+- 🅼 [`cp`](#markupdown-cp)
+- 🅼 [`init`](#markupdown-init)
+- 🅼 [`ls`](#markupdown-ls)
+- 🅼 [`render`](#markupdown-render)
+- 🅼 [`serve`](#markupdown-serve)
+- 🅼 [`title`](#markupdown-title)
+- 🅼 [`link`](#markupdown-link)
+- 🅼 [`clean`](#markupdown-clean)
+- 🅼 [`changelog`](#markupdown-changelog)
+- 🅼 [`transform`](#markupdown-transform)
+- 🅼 [`children`](#markupdown-children)
+- 🅼 [`siblings`](#markupdown-siblings)
+- 🅼 [`feed`](#markupdown-feed)
+- 🅼 [`sitemap`](#markupdown-sitemap)
+- 🅼 [`references`](#markupdown-references)
+- 🅼 [`minify`](#markupdown-minify)
+<a name="markupdown-__main__"></a>
+## 🅼 markupdown\.\_\_main\_\_
+<a name="markupdown-blurb"></a>
+## 🅼 markupdown\.blurb
 
-<a id="main"></a>
-# `__main__`
+- **Constants:**
+  - 🆅 [FIRST\_PARAGRAPH\_RE](#markupdown-blurb-FIRST_PARAGRAPH_RE)
+- **Functions:**
+  - 🅵 [blurb](#markupdown-blurb-blurb)
 
+### Constants
 
-<a id="blurb"></a>
-# `blurb`
-
-<a id="blurb-blurb"></a>
-## `blurb.blurb`
+<a name="markupdown-blurb-FIRST_PARAGRAPH_RE"></a>
+### 🆅 markupdown\.blurb\.FIRST\_PARAGRAPH\_RE
 
 ```python
-def blurb(glob_pattern: str, max_length: int) -> None:
+FIRST_PARAGRAPH_RE = re.compile('(?s)(?:\\A|\\n\\n)(?![ \\t]*(?:#{1,6}\\s|>|\\* |- |\\+ |\\d+\\.\\s))(.+?)(?=\\n\\n|\\Z)')
 ```
 
-Sets blurb for markdown files that don't have a `blurb` field in their frontmatter.
+### Functions
 
-Uses the first non-heading paragraph as the blurb if ast_pattern is not provided.
-
-
-
-<a id="changelog"></a>
-# `changelog`
-
-<a id="changelog-changelog"></a>
-## `changelog.changelog`
+<a name="markupdown-blurb-blurb"></a>
+### 🅵 markupdown\.blurb\.blurb
 
 ```python
-def changelog(glob_pattern: str, dest_dir: Path | str | None) -> None:
+def blurb(glob_pattern: str, max_length: int = 200) -> None:
 ```
 
-Add git metadata to markdown frontmatter in files matching a glob pattern. Adds:
+Sets blurb for markdown files that don't have a \`blurb\` field in their frontmatter\.
 
-- created_at
-    - updated_at
+Uses the first non-heading paragraph as the blurb if ast\_pattern is not provided\.
+<a name="markupdown-changelog"></a>
+## 🅼 markupdown\.changelog
+
+- **Functions:**
+  - 🅵 [changelog](#markupdown-changelog-changelog)
+
+### Functions
+
+<a name="markupdown-changelog-changelog"></a>
+### 🅵 markupdown\.changelog\.changelog
+
+```python
+def changelog(glob_pattern: str = '**/*.md', dest_dir: Path | str | None = None) -> None:
+```
+
+Add git metadata to markdown frontmatter in files matching a glob pattern\. Adds:
+
+- created\_at
+    - updated\_at
     - changelog
 
 The changelog field is a list of dictionaries with the following keys:
@@ -145,171 +108,192 @@ The changelog field is a list of dictionaries with the following keys:
     - date: The commit date
     - message: The commit message
 
-**Args:**
+**Parameters:**
 
-- `glob_pattern`: The glob pattern to match markdown files to update.
-- `dest_dir`: Base directory of markdown files that should be updated.
+- **glob_pattern**: The glob pattern to match markdown files to update\.
+- **dest_dir**: Base directory of markdown files that should be updated\.
 Not necessarily the same as the base directory of the glob pattern since
 you might wish to get changelogs from source files in a git managed
-content directory and apply them to a site directory that isn't in git.
+content directory and apply them to a site directory that isn't in git\.
+<a name="markupdown-children"></a>
+## 🅼 markupdown\.children
 
+- **Functions:**
+  - 🅵 [children](#markupdown-children-children)
 
+### Functions
 
-<a id="children"></a>
-# `children`
-
-<a id="children-children"></a>
-## `children.children`
+<a name="markupdown-children-children"></a>
+### 🅵 markupdown\.children\.children
 
 ```python
 def children(glob_pattern: str) -> None:
 ```
+<a name="markupdown-clean"></a>
+## 🅼 markupdown\.clean
 
+- **Functions:**
+  - 🅵 [clean](#markupdown-clean-clean)
 
-<a id="clean"></a>
-# `clean`
+### Functions
 
-<a id="clean-clean"></a>
-## `clean.clean`
+<a name="markupdown-clean-clean"></a>
+### 🅵 markupdown\.clean\.clean
 
 ```python
-def clean(dir: Path | str | None, safety: bool):
+def clean(dir: Path | str | None = None, safety: bool = True):
 ```
 
-Delete the contents of a directory if it exists.
+Delete the contents of a directory if it exists\.
 
-**Args:**
+**Parameters:**
 
-- `dir`: The directory to clean. Defaults to the current directory.
-- `safety`: Confirms if the directory to clean is not under the current directory.
-Defaults to True.
+- **dir** (default: `the current directory`): The directory to clean\. Defaults to the current directory\.
+- **safety**: Confirms if the directory to clean is not under the current directory\.
+Defaults to True\.
+<a name="markupdown-cp"></a>
+## 🅼 markupdown\.cp
 
+- **Functions:**
+  - 🅵 [cp](#markupdown-cp-cp)
 
+### Functions
 
-<a id="cp"></a>
-# `cp`
-
-<a id="cp-cp"></a>
-## `cp.cp`
+<a name="markupdown-cp-cp"></a>
+### 🅵 markupdown\.cp\.cp
 
 ```python
 def cp(glob_pattern: str, dest_dir: Path | str) -> None:
 ```
 
-Copy files matching a glob pattern to a destination directory. If the file is a markdown
+Copy files matching a glob pattern to a destination directory\. If the file is a markdown
 
-file, a `source` field will be added to the frontmatter in the copied file.
+file, a \`source\` field will be added to the frontmatter in the copied file\.
 
-**Args:**
+**Parameters:**
 
-- `glob_pattern`: The glob pattern to match files to copy.
-- `dest_dir`: The destination directory to copy files to.
+- **glob_pattern**: The glob pattern to match files to copy\.
+- **dest_dir**: The destination directory to copy files to\.
+<a name="markupdown-feed"></a>
+## 🅼 markupdown\.feed
 
+- **Functions:**
+  - 🅵 [feed](#markupdown-feed-feed)
 
+### Functions
 
-<a id="feed"></a>
-# `feed`
-
-<a id="feed-feed"></a>
-## `feed.feed`
+<a name="markupdown-feed-feed"></a>
+### 🅵 markupdown\.feed\.feed
 
 ```python
-def feed(glob_pattern: str, feed_id: str, feed_title: str, feed_link: str, feed_description: str, feed_author: str | None, dest_dir: Path | str | None) -> None:
+def feed(glob_pattern: str, feed_id: str, feed_title: str, feed_link: str, feed_description: str, feed_author: str | None = None, dest_dir: Path | str | None = None) -> None:
 ```
 
-Generate an RSS feed from markdown files matching a glob pattern.
+Generate an RSS feed from markdown files matching a glob pattern\.
 
-**Args:**
+**Parameters:**
 
-- `glob_pattern`: The glob pattern to match markdown files to include in the feed.
-- `dest_dir`: Directory to write the RSS feed to.
-Defaults to the base directory of the glob pattern.
-- `feed_title`: Title of the RSS feed. Defaults to "Blog Feed".
-- `feed_link`: Link to the website. Defaults to "http://example.com".
-- `feed_description`: Description of the feed. Defaults to "Latest blog posts".
+- **glob_pattern**: The glob pattern to match markdown files to include in the feed\.
+- **dest_dir**: Directory to write the RSS feed to\.
+Defaults to the base directory of the glob pattern\.
+- **feed_title** (default: `"Blog Feed"`): Title of the RSS feed\. Defaults to "Blog Feed"\.
+- **feed_link** (default: `"http://example.com"`): Link to the website\. Defaults to "http://example\.com"\.
+- **feed_description** (default: `"Latest blog posts"`): Description of the feed\. Defaults to "Latest blog posts"\.
+<a name="markupdown-files"></a>
+## 🅼 markupdown\.files
 
+- **Constants:**
+  - 🆅 [AST\_RENDERER](#markupdown-files-AST_RENDERER)
+- **Classes:**
+  - 🅲 [MarkdownFile](#markupdown-files-MarkdownFile)
 
+### Constants
 
-<a id="files"></a>
-# `files`
+<a name="markupdown-files-AST_RENDERER"></a>
+### 🆅 markupdown\.files\.AST\_RENDERER
 
-<a id="files-markdownfile"></a>
-## `files.MarkdownFile`
+```python
+AST_RENDERER = mistune.create_markdown(renderer=None)
+```
 
-<a id="files-markdownfile-init"></a>
-### `files.MarkdownFile.__init__`
+### Classes
+
+<a name="markupdown-files-MarkdownFile"></a>
+### 🅲 markupdown\.files\.MarkdownFile
+
+```python
+class MarkdownFile:
+```
+
+**Functions:**
+
+<a name="markupdown-files-MarkdownFile-__init__"></a>
+#### 🅵 markupdown\.files\.MarkdownFile\.\_\_init\_\_
 
 ```python
 def __init__(self, path: Path | str) -> None:
 ```
-
-<a id="files-markdownfile-frontmatter"></a>
-### `files.MarkdownFile.frontmatter`
+<a name="markupdown-files-MarkdownFile-frontmatter"></a>
+#### 🅵 markupdown\.files\.MarkdownFile\.frontmatter
 
 ```python
 def frontmatter(self) -> dict[str, object]:
 ```
-
-<a id="files-markdownfile-content"></a>
-### `files.MarkdownFile.content`
+<a name="markupdown-files-MarkdownFile-content"></a>
+#### 🅵 markupdown\.files\.MarkdownFile\.content
 
 ```python
 def content(self) -> str:
 ```
-
-<a id="files-markdownfile-ast"></a>
-### `files.MarkdownFile.ast`
+<a name="markupdown-files-MarkdownFile-ast"></a>
+#### 🅵 markupdown\.files\.MarkdownFile\.ast
 
 ```python
 def ast(self) -> list[dict[str, object]]:
 ```
-
-<a id="files-markdownfile-set-content"></a>
-### `files.MarkdownFile.set_content`
+<a name="markupdown-files-MarkdownFile-set_content"></a>
+#### 🅵 markupdown\.files\.MarkdownFile\.set\_content
 
 ```python
 def set_content(self, content: str) -> None:
 ```
-
-<a id="files-markdownfile-update-frontmatter"></a>
-### `files.MarkdownFile.update_frontmatter`
+<a name="markupdown-files-MarkdownFile-update_frontmatter"></a>
+#### 🅵 markupdown\.files\.MarkdownFile\.update\_frontmatter
 
 ```python
 def update_frontmatter(self, metadata: dict[str, object]) -> None:
 ```
-
-<a id="files-markdownfile-del-frontmatter-key"></a>
-### `files.MarkdownFile.del_frontmatter_key`
+<a name="markupdown-files-MarkdownFile-del_frontmatter_key"></a>
+#### 🅵 markupdown\.files\.MarkdownFile\.del\_frontmatter\_key
 
 ```python
 def del_frontmatter_key(self, key: str) -> None:
 ```
-
-<a id="files-markdownfile-url-path"></a>
-### `files.MarkdownFile.url_path`
+<a name="markupdown-files-MarkdownFile-url_path"></a>
+#### 🅵 markupdown\.files\.MarkdownFile\.url\_path
 
 ```python
 def url_path(self, base_dir: Path | str) -> str:
 ```
 
-Returns the URL path of the current page relative to the base directory.
+Returns the URL path of the current page relative to the base directory\.
 
 For example, if we have:
 
-- self.path: /home/alice/blog/posts/this-post.md
-- base_dir: /home/alice/blog
+- self\.path: /home/alice/blog/posts/this-post\.md
+- base\_dir: /home/alice/blog
 
 The returned URL is /posts/this-post
 
-**Args:**
+**Parameters:**
 
-- `base_dir`: The base directory to resolve the link against.
+- **base_dir**: The base directory to resolve the link against\.
 
-**Returns:** The URL of the current page relative to the base directory.
+**Returns:**
 
-
-<a id="files-markdownfile-resolve"></a>
-### `files.MarkdownFile.resolve`
+- The URL of the current page relative to the base directory\.
+<a name="markupdown-files-MarkdownFile-resolve"></a>
+#### 🅵 markupdown\.files\.MarkdownFile\.resolve
 
 ```python
 def resolve(self, base_dir: Path | str, rel_path: Path | str) -> Path:
@@ -317,576 +301,438 @@ def resolve(self, base_dir: Path | str, rel_path: Path | str) -> Path:
 
 Converts a path relative to the current markdown file into a subpath
 
-relative to the base directory. For example, if we have:
+relative to the base directory\. For example, if we have:
 
-- self.path: /home/alice/blog/posts/this-post.md
-- base_dir: /home/alice/blog
-- rel_path: ../index.md
+- self\.path: /home/alice/blog/posts/this-post\.md
+- base\_dir: /home/alice/blog
+- rel\_path: \.\./index\.md
 
-The returned path is index.md
+The returned path is index\.md
 
-**Args:**
+**Parameters:**
 
-- `base_dir`: The base directory to resolve the link against.
-- `rel_path`: The relative path to resolve.
+- **base_dir**: The base directory to resolve the link against\.
+- **rel_path**: The relative path to resolve\.
 
-**Returns:** The absolute path of the relative path.
+**Returns:**
 
-
-<a id="files-markdownfile-subpath"></a>
-### `files.MarkdownFile.subpath`
+- The absolute path of the relative path\.
+<a name="markupdown-files-MarkdownFile-subpath"></a>
+#### 🅵 markupdown\.files\.MarkdownFile\.subpath
 
 ```python
 def subpath(self, base_dir: Path | str) -> Path:
 ```
 
-Returns the path of the current page relative to the base directory.
+Returns the path of the current page relative to the base directory\.
 
 For example, if we have:
 
-- self.path: /home/alice/blog/posts/this-post.md
-- base_dir: /home/alice/blog
+- self\.path: /home/alice/blog/posts/this-post\.md
+- base\_dir: /home/alice/blog
 
-The returned path is posts/this-post.md
+The returned path is posts/this-post\.md
 
-**Args:**
+**Parameters:**
 
-- `base_dir`: The base directory to resolve the link against.
+- **base_dir**: The base directory to resolve the link against\.
 
-**Returns:** The path of the current page relative to the base directory.
+**Returns:**
 
-
-<a id="files-markdownfile-save"></a>
-### `files.MarkdownFile.save`
+- The path of the current page relative to the base directory\.
+<a name="markupdown-files-MarkdownFile-save"></a>
+#### 🅵 markupdown\.files\.MarkdownFile\.save
 
 ```python
 def save(self) -> None:
 ```
+<a name="markupdown-init"></a>
+## 🅼 markupdown\.init
 
+- **Functions:**
+  - 🅵 [init](#markupdown-init-init)
 
-<a id="init"></a>
-# `init`
+### Functions
 
-<a id="init-init"></a>
-## `init.init`
+<a name="markupdown-init-init"></a>
+### 🅵 markupdown\.init\.init
 
 ```python
-def init(root_path: Path | str, safety: bool) -> None:
+def init(root_path: Path | str = '.', safety: bool = True) -> None:
 ```
 
-Initialize a new markupdown project by copying the example directory structure.
+Initialize a new markupdown project by copying the example directory structure\.
 
-**Args:**
+**Parameters:**
 
-- `root_path`: The target directory where the example should be copied.
-Defaults to current directory.
-- `safety`: Confirms if the target directory is not empty before initializing.
-Defaults to True.
+- **root_path**: The target directory where the example should be copied\.
+Defaults to current directory\.
+- **safety**: Confirms if the target directory is not empty before initializing\.
+Defaults to True\.
+<a name="markupdown-link"></a>
+## 🅼 markupdown\.link
 
+- **Functions:**
+  - 🅵 [link](#markupdown-link-link)
 
+### Functions
 
-<a id="link"></a>
-# `link`
-
-<a id="link-link"></a>
-## `link.link`
+<a name="markupdown-link-link"></a>
+### 🅵 markupdown\.link\.link
 
 ```python
 def link(glob_pattern: str) -> None:
 ```
 
-Sets the 'link' field in frontmatter for markdown files matching the glob pattern.
+Sets the 'link' field in frontmatter for markdown files matching the glob pattern\.
 
-The link is constructed from the file path, with special handling for index.md files.
-The path will be a relative path from the base directory of the glob pattern.
+The link is constructed from the file path, with special handling for index\.md files\.
+The path will be a relative path from the base directory of the glob pattern\.
 
-**Args:**
+**Parameters:**
 
-- `glob_pattern`: The glob pattern to match markdown files to update.
+- **glob_pattern**: The glob pattern to match markdown files to update\.
+<a name="markupdown-ls"></a>
+## 🅼 markupdown\.ls
 
+- **Functions:**
+  - 🅵 [ls](#markupdown-ls-ls)
 
+### Functions
 
-<a id="ls"></a>
-# `ls`
-
-<a id="ls-ls"></a>
-## `ls.ls`
+<a name="markupdown-ls-ls"></a>
+### 🅵 markupdown\.ls\.ls
 
 ```python
 def ls(glob_pattern: str) -> tuple[Path, list[Path]]:
 ```
 
-List files matching a glob pattern.
+List files matching a glob pattern\.
 
-**Args:**
+**Parameters:**
 
-- `glob_pattern`: Relative or absolute glob pattern to match files.
+- **glob_pattern**: Relative or absolute glob pattern to match files\.
 
-**Returns:** A tuple containing (base_dir, list_of_matching_subpaths).
+**Returns:**
 
+- A tuple containing \(base\_dir, list\_of\_matching\_subpaths\)\.
+<a name="markupdown-minify"></a>
+## 🅼 markupdown\.minify
 
+- **Functions:**
+  - 🅵 [minify](#markupdown-minify-minify)
 
-<a id="minify"></a>
-# `minify`
+### Functions
 
-<a id="minify-minify"></a>
-## `minify.minify`
+<a name="markupdown-minify-minify"></a>
+### 🅵 markupdown\.minify\.minify
 
 ```python
 def minify(glob_pattern: str) -> None:
 ```
 
-Minify HTML, CSS, and JS files matching a glob pattern.
+Minify HTML, CSS, and JS files matching a glob pattern\.
 
-**Args:**
+**Parameters:**
 
-- `glob_pattern`: The glob pattern to match HTML, CSS, and JS files to minify.
+- **glob_pattern**: The glob pattern to match HTML, CSS, and JS files to minify\.
+<a name="markupdown-references"></a>
+## 🅼 markupdown\.references
 
+- **Constants:**
+  - 🆅 [A\_HREF\_AST\_PATH](#markupdown-references-A_HREF_AST_PATH)
+- **Functions:**
+  - 🅵 [references](#markupdown-references-references)
 
+### Constants
 
-<a id="pydoc"></a>
-# `pydoc`
-
-generate_docs.py
-
-This script crawls a Python package directory, extracts docstrings from modules,
-classes, functions, and methods using the `ast` module, and writes the results
-to a single Markdown file.
-
-Additional features:
-  - Module names are shown as dotted names (e.g. "foo.bar.baz") rather than file paths.
-  - For each __init__.py, if an __all__ is defined, an Exports section is generated.
-  - The Table of Contents lists fully qualified names (e.g. foo.bar.MyClass.my_method) without prefixes.
-  - Headers have descriptive HTML anchors derived from their dotted names.
-  - For each function/method, its signature is included with type hints (if present) and its return type.
-  - Autodetects docstring formats (Google-style, NumPy-style, etc.) and reformats them into Markdown.
-  - The Exports section builds links to the documented sections by matching the actual headers.
-
-
-<a id="pydoc-make-anchor"></a>
-## `pydoc.make_anchor`
+<a name="markupdown-references-A_HREF_AST_PATH"></a>
+### 🆅 markupdown\.references\.A\_HREF\_AST\_PATH
 
 ```python
-def make_anchor(text):
+A_HREF_AST_PATH = '$..attrs.url'
 ```
 
-Create a slug for the anchor by removing formatting,
+### Functions
 
-lower-casing, and replacing non-alphanumeric characters with hyphens.
-
-
-<a id="pydoc-add-header"></a>
-## `pydoc.add_header`
+<a name="markupdown-references-references"></a>
+### 🅵 markupdown\.references\.references
 
 ```python
-def add_header(header_text, level):
+def references(glob_pattern: str, ast_pattern: str | None = None) -> None:
 ```
+<a name="markupdown-render"></a>
+## 🅼 markupdown\.render
 
-Create a markdown header with a unique, descriptive anchor and record it for the TOC.
+- **Functions:**
+  - 🅵 [render](#markupdown-render-render)
+- **Classes:**
+  - 🅲 [MarkupdownRenderer](#markupdown-render-MarkupdownRenderer)
 
-**Args:**
+### Functions
 
-- `header_text` (*str*): The header text (expected to be a fully qualified dotted name).
-- `level` (*int*): The markdown header level (1 for h1, 2 for h2, etc.)
-
-**Returns:** list of str: Markdown lines for the header (including an HTML anchor).
-
-
-<a id="pydoc-get-module-name"></a>
-## `pydoc.get_module_name`
+<a name="markupdown-render-render"></a>
+### 🅵 markupdown\.render\.render
 
 ```python
-def get_module_name(file_path, package_dir):
+def render(glob_pattern: str, site: dict[str, object] = {}, dest_dir: Path | str | None = None, template_dir: str | Path = 'templates') -> None:
 ```
 
-Convert a file path to a dotted module name relative to package_dir.
+Render markdown files to HTML using liquid templates\.
 
-For example, if package_dir is '/path/to/src' and file_path is
-'/path/to/src/foo/bar/baz.py', the returned module name is 'foo.bar.baz'.
-For __init__.py, the "__init__" part is dropped.
+For each markdown file:
+- Convert markdown content to HTML
+- Apply liquid template specified in frontmatter \(or default\.liquid\)
+- Write rendered HTML to the same location with \.html extension
 
-**Args:**
+**Parameters:**
 
-- `file_path` (*str*): The absolute or relative file path.
-- `package_dir` (*str*): The root package directory.
+- **glob_pattern**: The glob pattern of the markdown files to render\.
+- **site** (default: `{}`): Dictionary of site configuration\. Defaults to \{\}\.
+- **dest_dir**: Directory to render to\.
+Defaults to the base directory of the glob pattern\.
+- **template_dir**: Directory containing liquid templates\.
+Defaults to "templates" in current directory\.
 
-**Returns:** (*str*) The dotted module name.
+**Raises:**
 
+- **FileNotFoundError**: If template directory doesn't exist
+- **ValueError**: If no template is specified and no default\.liquid exists
 
-<a id="pydoc-extract-all-from-ast"></a>
-## `pydoc.extract_all_from_ast`
+### Classes
+
+<a name="markupdown-render-MarkupdownRenderer"></a>
+### 🅲 markupdown\.render\.MarkupdownRenderer
 
 ```python
-def extract_all_from_ast(tree):
+class MarkupdownRenderer(mistune.HTMLRenderer):
 ```
 
-Look for an assignment to __all__ in the module AST and extract its value.
+**Functions:**
 
-**Args:**
-
-- `tree` (*ast.Module*): The parsed AST of the module.
-
-**Returns:** list of str or None: The list of exported names if found, otherwise None.
-
-
-<a id="pydoc-get-function-signature"></a>
-## `pydoc.get_function_signature`
-
-```python
-def get_function_signature(node):
-```
-
-Build a string representation of the function/method signature,
-
-including parameter type hints and the return type.
-
-Note: Default values are not included.
-
-**Args:**
-
-- `node` (*ast.FunctionDef or ast.AsyncFunctionDef*): The function node.
-
-**Returns:** (*str*) A signature string, e.g.:
-def func(arg1: int, arg2: str, *args: Any, **kwargs: Any) -> bool:
-
-
-<a id="pydoc-format-docstring"></a>
-## `pydoc.format_docstring`
-
-```python
-def format_docstring(docstring):
-```
-
-Parse a docstring and reformat its components as Markdown.
-
-**Args:**
-
-- `docstring` (*str*): The raw docstring.
-
-**Returns:** (*str*) The formatted Markdown version of the docstring.
-
-
-<a id="pydoc-extract-docstrings-from-node"></a>
-## `pydoc.extract_docstrings_from_node`
-
-```python
-def extract_docstrings_from_node(node, parent_qualname, heading_level):
-```
-
-Recursively extract docstrings from an AST node using fully qualified dotted names.
-
-For functions and methods, the signature (with type hints) is included.
-Docstrings are parsed (as Google-style) and reformatted into Markdown.
-
-**Args:**
-
-- `node` (*ast.AST*): The AST node (e.g. Module, ClassDef, FunctionDef).
-- `parent_qualname` (*str*): The fully qualified name of the parent (module or class).
-- `heading_level` (*int*): The markdown header level to use.
-
-**Returns:** list of str: Lines of markdown documenting the node.
-
-
-<a id="pydoc-process-file"></a>
-## `pydoc.process_file`
-
-```python
-def process_file(file_path, package_dir):
-```
-
-Process a single Python file to extract its documentation as markdown text.
-
-If the file is an __init__.py, also extract its __all__.
-
-**Args:**
-
-- `file_path` (*str*): The path to the Python (.py) file.
-- `package_dir` (*str*): The root package directory (used for computing module name).
-
-**Returns:** (*str*) The markdown-formatted documentation extracted from the file.
-
-
-<a id="pydoc-crawl-directory"></a>
-## `pydoc.crawl_directory`
-
-```python
-def crawl_directory(directory):
-```
-
-Recursively crawl a directory, process each Python file, and concatenate
-
-their markdown documentation.
-
-**Args:**
-
-- `directory` (*str*): The root directory to crawl.
-
-**Returns:** (*str*) The combined markdown documentation for the entire package.
-
-
-<a id="pydoc-generate-toc"></a>
-## `pydoc.generate_toc`
-
-```python
-def generate_toc():
-```
-
-Generate a Markdown-formatted Table of Contents based on the collected headers.
-
-**Returns:** list of str: Lines for the Table of Contents.
-
-
-<a id="pydoc-generate-exports-section"></a>
-## `pydoc.generate_exports_section`
-
-```python
-def generate_exports_section():
-```
-
-Generate a Markdown section listing __all__ exports for modules that define it.
-
-Each module and export is linked to its respective section.
-
-**Returns:** list of str: Lines for the Exports section.
-
-
-<a id="pydoc-main"></a>
-## `pydoc.main`
-
-```python
-def main():
-```
-
-
-<a id="references"></a>
-# `references`
-
-<a id="references-references"></a>
-## `references.references`
-
-```python
-def references(glob_pattern: str, ast_pattern: str | None) -> None:
-```
-
-
-<a id="render"></a>
-# `render`
-
-<a id="render-markupdownrenderer"></a>
-## `render.MarkupdownRenderer`
-
-<a id="render-markupdownrenderer-init"></a>
-### `render.MarkupdownRenderer.__init__`
+<a name="markupdown-render-MarkupdownRenderer-__init__"></a>
+#### 🅵 markupdown\.render\.MarkupdownRenderer\.\_\_init\_\_
 
 ```python
 def __init__(self, md_file: MarkdownFile, base_dir: Path | str, **kwargs):
 ```
-
-<a id="render-markupdownrenderer-link"></a>
-### `render.MarkupdownRenderer.link`
-
-```python
-def link(self, text, url, title):
-```
-
-<a id="render-markupdownrenderer-block-code"></a>
-### `render.MarkupdownRenderer.block_code`
+<a name="markupdown-render-MarkupdownRenderer-link"></a>
+#### 🅵 markupdown\.render\.MarkupdownRenderer\.link
 
 ```python
-def block_code(self, code, info):
+def link(self, text, url, title = None):
 ```
-
-<a id="render-render"></a>
-## `render.render`
+<a name="markupdown-render-MarkupdownRenderer-block_code"></a>
+#### 🅵 markupdown\.render\.MarkupdownRenderer\.block\_code
 
 ```python
-def render(glob_pattern: str, site: dict[str, object], dest_dir: Path | str | None, template_dir: str | Path) -> None:
+def block_code(self, code, info = None):
 ```
+<a name="markupdown-serve"></a>
+## 🅼 markupdown\.serve
 
-Render markdown files to HTML using liquid templates.
+- **Functions:**
+  - 🅵 [serve](#markupdown-serve-serve)
 
-For each markdown file:
-- Convert markdown content to HTML
-- Apply liquid template specified in frontmatter (or default.liquid)
-- Write rendered HTML to the same location with .html extension
+### Functions
 
-**Args:**
-
-- `glob_pattern`: The glob pattern of the markdown files to render.
-- `site`: Dictionary of site configuration. Defaults to {}.
-- `dest_dir`: Directory to render to.
-Defaults to the base directory of the glob pattern.
-- `template_dir`: Directory containing liquid templates.
-Defaults to "templates" in current directory.
-
-**Raises:**
-
-- `FileNotFoundError` (*FileNotFoundError*): If template directory doesn't exist
-- `ValueError` (*ValueError*): If no template is specified and no default.liquid exists
-
-
-
-<a id="serve"></a>
-# `serve`
-
-<a id="serve-serve"></a>
-## `serve.serve`
+<a name="markupdown-serve-serve"></a>
+### 🅵 markupdown\.serve\.serve
 
 ```python
-def serve(port: int, build_script: Path | str, site_dir: Path | str, watch_dirs: list[Path | str]):
+def serve(port: int = 8000, build_script: Path | str = 'build.py', site_dir: Path | str = 'site', watch_dirs: list[Path | str] = []):
 ```
 
-Start a local development server to preview the generated site.
+Start a local development server to preview the generated site\.
 
-Uses the build.py script to rebuild the site when changes are detected.
+Uses the build\.py script to rebuild the site when changes are detected\.
 
-**Args:**
+**Parameters:**
 
-- `port`: The port number to run the server on. Defaults to 8000.
-- `build_script`: The build.py script to use. Defaults to "build.py".
-- `site_dir`: The directory to serve. Defaults to "site".
-- `watch_dirs`: Directories to watch for changes.
-Defaults to ["content", "templates", "assets", "build.py"].
+- **port** (default: `8000`): The port number to run the server on\. Defaults to 8000\.
+- **build_script** (default: `"build.py"`): The build\.py script to use\. Defaults to "build\.py"\.
+- **site_dir** (default: `"site"`): The directory to serve\. Defaults to "site"\.
+- **watch_dirs**: Directories to watch for changes\.
+Defaults to \["content", "templates", "assets", "build\.py"\]\.
+<a name="markupdown-siblings"></a>
+## 🅼 markupdown\.siblings
 
+- **Functions:**
+  - 🅵 [siblings](#markupdown-siblings-siblings)
 
+### Functions
 
-<a id="siblings"></a>
-# `siblings`
-
-<a id="siblings-siblings"></a>
-## `siblings.siblings`
+<a name="markupdown-siblings-siblings"></a>
+### 🅵 markupdown\.siblings\.siblings
 
 ```python
 def siblings(glob_pattern: str) -> None:
 ```
+<a name="markupdown-sitemap"></a>
+## 🅼 markupdown\.sitemap
 
+- **Functions:**
+  - 🅵 [sitemap](#markupdown-sitemap-sitemap)
 
-<a id="sitemap"></a>
-# `sitemap`
+### Functions
 
-<a id="sitemap-sitemap"></a>
-## `sitemap.sitemap`
-
-```python
-def sitemap(glob_pattern: str, site_url: str, dest_dir: Path | str | None, default_priority: float, default_changefreq: str) -> None:
-```
-
-Generate a sitemap.xml from markdown files matching a glob pattern.
-
-**Args:**
-
-- `glob_pattern`: The glob pattern to match markdown files to include in the sitemap.
-- `site_url`: Base URL of the website (e.g., 'https://example.com').
-- `dest_dir`: Directory to write the sitemap to.
-Defaults to the base directory of the glob pattern.
-- `default_priority`: Default priority for URLs (0.0 to 1.0).
-- `default_changefreq`: Default change frequency.
-Options: always, hourly, daily, weekly, monthly, yearly, never.
-
-
-
-<a id="title"></a>
-# `title`
-
-<a id="title-title"></a>
-## `title.title`
+<a name="markupdown-sitemap-sitemap"></a>
+### 🅵 markupdown\.sitemap\.sitemap
 
 ```python
-def title(glob_pattern: str, ast_pattern: str | None) -> None:
+def sitemap(glob_pattern: str, site_url: str, dest_dir: Path | str | None = None, default_priority: float = 0.5, default_changefreq: str = 'weekly') -> None:
 ```
 
-Sets titles for markdown files that don't have a `title` field in their frontmatter.
+Generate a sitemap\.xml from markdown files matching a glob pattern\.
 
-Uses the first # h1 as the title if ast_pattern is not provided. If no # h1 is found,
+**Parameters:**
+
+- **glob_pattern**: The glob pattern to match markdown files to include in the sitemap\.
+- **site_url**: Base URL of the website \(e\.g\., 'https://example\.com'\)\.
+- **dest_dir**: Directory to write the sitemap to\.
+Defaults to the base directory of the glob pattern\.
+- **default_priority**: Default priority for URLs \(0\.0 to 1\.0\)\.
+- **default_changefreq**: Default change frequency\.
+Options: always, hourly, daily, weekly, monthly, yearly, never\.
+<a name="markupdown-title"></a>
+## 🅼 markupdown\.title
+
+- **Constants:**
+  - 🆅 [PAGE\_TITLE\_AST\_PATH](#markupdown-title-PAGE_TITLE_AST_PATH)
+- **Functions:**
+  - 🅵 [title](#markupdown-title-title)
+
+### Constants
+
+<a name="markupdown-title-PAGE_TITLE_AST_PATH"></a>
+### 🆅 markupdown\.title\.PAGE\_TITLE\_AST\_PATH
+
+```python
+PAGE_TITLE_AST_PATH = '$[?(@.type == "heading" & @.attrs.level == 1 & @.children[0].type == "text")].children[0].raw'
+```
+
+### Functions
+
+<a name="markupdown-title-title"></a>
+### 🅵 markupdown\.title\.title
+
+```python
+def title(glob_pattern: str, ast_pattern: str | None = None) -> None:
+```
+
+Sets titles for markdown files that don't have a \`title\` field in their frontmatter\.
+
+Uses the first \# h1 as the title if ast\_pattern is not provided\. If no \# h1 is found,
 the filename is used with the following rules:
 
-- Replace .md with empty string
+- Replace \.md with empty string
 - Replace - with spaces
 - Capitalize
 
-**Args:**
+**Parameters:**
 
-- `glob_pattern`: The glob pattern of the markdown files to update.
-- `ast_pattern`: The jmespath expression to select the title.
-Defaults to the first # h1.
+- **glob_pattern**: The glob pattern of the markdown files to update\.
+- **ast_pattern**: The jmespath expression to select the title\.
+Defaults to the first \# h1\.
+<a name="markupdown-transform"></a>
+## 🅼 markupdown\.transform
 
+- **Functions:**
+  - 🅵 [transform](#markupdown-transform-transform)
 
+### Functions
 
-<a id="transform"></a>
-# `transform`
-
-<a id="transform-transform"></a>
-## `transform.transform`
+<a name="markupdown-transform-transform"></a>
+### 🅵 markupdown\.transform\.transform
 
 ```python
 def transform(glob_pattern: str, func: Callable[[MarkdownFile, Path], Any]) -> None:
 ```
 
-Apply a transformation function to markdown files matching a glob pattern.
+Apply a transformation function to markdown files matching a glob pattern\.
 
-**Args:**
+**Parameters:**
 
-- `glob_pattern`: The glob pattern to match markdown files to transform.
-- `func`: A callable that takes a MarkdownFile and SiteFile as arguments and applies
-the desired transformation.
+- **glob_pattern**: The glob pattern to match markdown files to transform\.
+- **func**: A callable that takes a MarkdownFile and SiteFile as arguments and applies
+the desired transformation\.
+<a name="markupdown-util"></a>
+## 🅼 markupdown\.util
 
+- **Constants:**
+  - 🆅 [LOGGING\_CONFIG](#markupdown-util-LOGGING_CONFIG)
+- **Functions:**
+  - 🅵 [init\_logger](#markupdown-util-init_logger)
+  - 🅵 [resolve\_base](#markupdown-util-resolve_base)
+  - 🅵 [strip\_html](#markupdown-util-strip_html)
+- **Classes:**
+  - 🅲 [HTMLStripper](#markupdown-util-HTMLStripper)
 
+### Constants
 
-<a id="util"></a>
-# `util`
+<a name="markupdown-util-LOGGING_CONFIG"></a>
+### 🆅 markupdown\.util\.LOGGING\_CONFIG
 
-<a id="util-init-logger"></a>
-## `util.init_logger`
+```python
+LOGGING_CONFIG = {'version': 1, 'disable_existing_loggers': False, 'formatters': {'simple': {'format': '[%(asctime)s] [%(name)s] [%(levelname)s] %(message)s'}}, 'handlers': {'console': {'class': 'logging.StreamHandler', 'formatter': 'simple', 'level': 'INFO'}}, 'loggers': {'markupdown': {'handlers': ['console'], 'level': 'WARNING', 'propagate': False}}}
+```
+
+### Functions
+
+<a name="markupdown-util-init_logger"></a>
+### 🅵 markupdown\.util\.init\_logger
 
 ```python
 def init_logger() -> None:
 ```
-
-<a id="util-resolve-base"></a>
-## `util.resolve_base`
+<a name="markupdown-util-resolve_base"></a>
+### 🅵 markupdown\.util\.resolve\_base
 
 ```python
 def resolve_base(glob_pattern: str) -> tuple[Path, str]:
 ```
 
-Given a glob pattern, resolve the base directory and relative glob pattern.
+Given a glob pattern, resolve the base directory and relative glob pattern\.
 
 Some examples:
 
-- "site/**/*.md" -> ("site", "**/*.md")
-- "**/*.md" -> (current directory, "**/*.md")
-- "post[s]/index.md" -> (current directory, "post[s]/index.md")
-- "/pages/post[s]/index.md" -> ("/pages", "post[s]/index.md")
-
-
-<a id="util-htmlstripper"></a>
-## `util.HTMLStripper`
-
-<a id="util-htmlstripper-init"></a>
-### `util.HTMLStripper.__init__`
-
-```python
-def __init__(self):
-```
-
-<a id="util-htmlstripper-handle-data"></a>
-### `util.HTMLStripper.handle_data`
-
-```python
-def handle_data(self, data: str):
-```
-
-<a id="util-htmlstripper-get-data"></a>
-### `util.HTMLStripper.get_data`
-
-```python
-def get_data(self):
-```
-
-<a id="util-strip-html"></a>
-## `util.strip_html`
+- "site/\*\*/\*\.md" -\> \("site", "\*\*/\*\.md"\)
+- "\*\*/\*\.md" -\> \(current directory, "\*\*/\*\.md"\)
+- "post\[s\]/index\.md" -\> \(current directory, "post\[s\]/index\.md"\)
+- "/pages/post\[s\]/index\.md" -\> \("/pages", "post\[s\]/index\.md"\)
+<a name="markupdown-util-strip_html"></a>
+### 🅵 markupdown\.util\.strip\_html
 
 ```python
 def strip_html(html: str) -> str:
 ```
 
+### Classes
+
+<a name="markupdown-util-HTMLStripper"></a>
+### 🅲 markupdown\.util\.HTMLStripper
+
+```python
+class HTMLStripper(HTMLParser):
+```
+
+**Functions:**
+
+<a name="markupdown-util-HTMLStripper-__init__"></a>
+#### 🅵 markupdown\.util\.HTMLStripper\.\_\_init\_\_
+
+```python
+def __init__(self):
+```
+<a name="markupdown-util-HTMLStripper-handle_data"></a>
+#### 🅵 markupdown\.util\.HTMLStripper\.handle\_data
+
+```python
+def handle_data(self, data: str):
+```
+<a name="markupdown-util-HTMLStripper-get_data"></a>
+#### 🅵 markupdown\.util\.HTMLStripper\.get\_data
+
+```python
+def get_data(self):
+```
