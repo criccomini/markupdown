@@ -21,6 +21,7 @@
 - 🅼 [markupdown\.siblings](#markupdown-siblings)
 - 🅼 [markupdown\.sitemap](#markupdown-sitemap)
 - 🅼 [markupdown\.title](#markupdown-title)
+- 🅼 [markupdown\.toc](#markupdown-toc)
 - 🅼 [markupdown\.transform](#markupdown-transform)
 - 🅼 [markupdown\.util](#markupdown-util)
 
@@ -49,6 +50,7 @@
 - 🅼 [`sitemap`](#markupdown-sitemap)
 - 🅼 [`references`](#markupdown-references)
 - 🅼 [`minify`](#markupdown-minify)
+- 🅼 [`toc`](#markupdown-toc)
 <a name="markupdown-__main__"></a>
 ## 🅼 markupdown\.\_\_main\_\_
 <a name="markupdown-blurb"></a>
@@ -468,6 +470,7 @@ def references(glob_pattern: str, ast_pattern: str | None = None) -> None:
   - 🅵 [render](#markupdown-render-render)
 - **Classes:**
   - 🅲 [MarkupdownRenderer](#markupdown-render-MarkupdownRenderer)
+  - 🅲 [TocHeadingGenerator](#markupdown-render-TocHeadingGenerator)
 
 ### Functions
 
@@ -527,6 +530,27 @@ def link(self, text, url, title = None):
 
 ```python
 def block_code(self, code, info = None):
+```
+<a name="markupdown-render-TocHeadingGenerator"></a>
+### 🅲 markupdown\.render\.TocHeadingGenerator
+
+```python
+class TocHeadingGenerator:
+```
+
+**Functions:**
+
+<a name="markupdown-render-TocHeadingGenerator-__init__"></a>
+#### 🅵 markupdown\.render\.TocHeadingGenerator\.\_\_init\_\_
+
+```python
+def __init__(self) -> None:
+```
+<a name="markupdown-render-TocHeadingGenerator-__call__"></a>
+#### 🅵 markupdown\.render\.TocHeadingGenerator\.\_\_call\_\_
+
+```python
+def __call__(self, token: dict[str, Any], _: int) -> str:
 ```
 <a name="markupdown-serve"></a>
 ## 🅼 markupdown\.serve
@@ -634,6 +658,31 @@ the filename is used with the following rules:
 - **glob_pattern**: The glob pattern of the markdown files to update\.
 - **ast_pattern**: The jmespath expression to select the title\.
 Defaults to the first \# h1\.
+<a name="markupdown-toc"></a>
+## 🅼 markupdown\.toc
+
+- **Functions:**
+  - 🅵 [toc](#markupdown-toc-toc)
+
+### Functions
+
+<a name="markupdown-toc-toc"></a>
+### 🅵 markupdown\.toc\.toc
+
+```python
+def toc(glob_pattern: str) -> None:
+```
+
+Sets the 'toc' field in frontmatter for markdown files matching the glob pattern\.
+
+The 'toc' field is a list of dicts with the following keys:
+    - 'level': The heading level
+    - 'slug': The slug of the heading
+    - 'title': The text of the heading
+
+**Parameters:**
+
+- **glob_pattern**: The glob pattern to match markdown files to update\.
 <a name="markupdown-transform"></a>
 ## 🅼 markupdown\.transform
 
