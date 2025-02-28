@@ -14,6 +14,7 @@ from .serve import serve
 from .siblings import siblings
 from .sitemap import sitemap
 from .title import title
+from .toc import toc
 from .transform import transform
 from .util import init_logger
 
@@ -37,4 +38,5 @@ __all__ = [
     "sitemap",
     "references",
     "minify",
+    "toc",
 ]

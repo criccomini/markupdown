@@ -7,9 +7,11 @@ from urllib.parse import urlsplit, urlunsplit
 
 import mistune
 from liquid import Environment, FileSystemLoader
+from mistune.toc import add_toc_hook
 from pygments import highlight
 from pygments.formatters import html
 from pygments.lexers import get_lexer_by_name
+from slugify import slugify
 
 from markupdown.util import resolve_base
 
@@ -48,6 +50,20 @@ class MarkupdownRenderer(mistune.HTMLRenderer):
             formatter = html.HtmlFormatter(style="colorful")
             return highlight(code, lexer, formatter)
         return "<pre><code>" + mistune.escape(code) + "</code></pre>"
+
+
+class TocHeadingGenerator:
+    def __init__(self) -> None:
+        self.heading_crumbs = []
+
+    def __call__(self, token: dict[str, Any], _: int) -> str:
+        header_text = token["text"]
+        level = token["attrs"]["level"]
+        while self.heading_crumbs and level <= self.heading_crumbs[-1][1]:
+            self.heading_crumbs.pop()
+        header_text = slugify(header_text)
+        self.heading_crumbs.append((header_text, level))
+        return "_".join(map(lambda x: x[0], self.heading_crumbs))
 
 
 def render(
@@ -167,7 +183,9 @@ def render(
             ],
             renderer=MarkupdownRenderer(md_file, base_dir, escape=False),
         )
-        html_content = str(format_markdown(md_file.content())).strip()
+        add_toc_hook(format_markdown, heading_id=TocHeadingGenerator())
+        html_content, _ = format_markdown.parse(md_file.content())
+        html_content = str(html_content).strip()
         frontmatter = md_file.frontmatter()
         page_template = str(frontmatter.get("template", "default"))
 
