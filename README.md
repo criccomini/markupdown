@@ -55,6 +55,7 @@ Markupdown ships with the following functions:
 - `siblings`: Generates `siblings` frontmatter that contains paths for sibling markdown files
 - `sitemap`: Generates an XML sitemap
 - `title`: Updates the `title` field frontmatter with the value of the first # h1 or filename
+- `toc`: Generates a table of contents from markdown files
 - `transform`: Applies a transformation function to the frontmatter in markdown files
 
 See [DOCUMENTATION.md](./DOCUMENTATION.md) for more information.
